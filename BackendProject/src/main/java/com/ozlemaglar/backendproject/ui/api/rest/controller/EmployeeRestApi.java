@@ -31,7 +31,7 @@ public class EmployeeRestApi implements IEmployeeApiRest {
     @Override
     @GetMapping({"/","/index"})
     public String getRoot() {
-        return null;
+        return "index";
     }
 
     //Save

@@ -5,11 +5,15 @@ import com.ozlemaglar.backendproject.data.entity.EmployeeEntity;
 import com.ozlemaglar.backendproject.data.repostory.IEmployeeRepository;
 import com.ozlemaglar.backendproject.bean.ModelMapperBean;
 import com.ozlemaglar.backendproject.business.dto.EmployeeDto;
+import com.ozlemaglar.backendproject.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,46 +27,83 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public final IEmployeeRepository repository;
     public final ModelMapperBean modelMapper;
 
-    //Model Mapper(Dto)
+    //Model Mapper (DTO )
     @Override
     public EmployeeDto entityToDto(EmployeeEntity employeeEntity) {
-        EmployeeDto employeeDto= modelMapper.modelMapperMethod().map(employeeEntity,EmployeeDto.class);
-        return null;
+        EmployeeDto employeeDto=modelMapper.modelMapperMethod().map(employeeEntity,EmployeeDto.class);
+        return employeeDto;
     }
-    //Model Mapper(Entity)
+
+    //Model Mapper (Entity)
     @Override
     public EmployeeEntity dtoToEntity(EmployeeDto employeeDto) {
-        EmployeeEntity employeeEntity= modelMapper.modelMapperMethod().map(employeeDto,EmployeeEntity.class);
-        return null;
+        EmployeeEntity employeeEntity=modelMapper.modelMapperMethod().map(employeeDto,EmployeeEntity.class);
+        return employeeEntity;
     }
 
-    //create
+    //CREATE
     @Override
-    public EmployeeDto createEmployee(EmployeeDto employeeDto) {
-        return null;
+    @PostMapping("/save/employee")
+    public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
+        if(employeeDto!=null){
+            //Spring Security maskeleme yapmak
+            EmployeeEntity employeeEntity=dtoToEntity(employeeDto);
+            repository.save(employeeEntity);
+        }
+        return employeeDto;
     }
 
-    //list
+    //LIST
     @Override
+    @GetMapping("/list/employee")
     public List<EmployeeDto> getAllEmployees() {
-        return null;
+        //entity List (FindAll)
+        Iterable<EmployeeEntity> entityList=repository.findAll();
+        //dto list
+        List<EmployeeDto> dtoList=new ArrayList<>();
+        for (EmployeeEntity temp: entityList){
+            EmployeeDto employeeDto=entityToDto(temp);
+            dtoList.add(employeeDto);
+        }
+        return dtoList;
     }
 
-    //find
+    //FIND
     @Override
-    public EmployeeDto getEmployeeById(Long id) {
-        return null;
+    @GetMapping("/find/employee/{id}")
+    public EmployeeDto getEmployeeById(@PathVariable(name="id") Long id) {
+        //find Entity
+        EmployeeEntity employeeEntity=repository.findById(id).orElseThrow(()->new ResourceNotFoundException(id+" id bulunamadı"));
+        EmployeeDto employeeDto=entityToDto(employeeEntity);
+        return employeeDto;
     }
 
-    //update
+    //DELETE
     @Override
-    public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
-        return null;
+    @DeleteMapping("/delete/employee/{id}")
+    public Map<String, Boolean> deleteEmployee(@PathVariable(name="id") Long id) {
+        //find Entity
+        EmployeeEntity employeeEntity=repository.findById(id).orElseThrow(()->new ResourceNotFoundException(id+" id bulunamadı"));
+        //Object delete
+        repository.delete(employeeEntity);
+        Map<String, Boolean> response=new HashMap<>();
+        response.put("silindi",Boolean.TRUE);
+        return response;
     }
 
-    //delete
+    //UPDATE
     @Override
-    public Map<String, Boolean> deleteEmployee(Long id) {
-        return null;
+    @PutMapping("/update/employee/{id}")
+    public EmployeeDto updateEmployee(@PathVariable(name="id") Long id, @RequestBody EmployeeDto employeeDto) {
+        //find Entity
+        EmployeeEntity employeeEntity=repository.findById(id).orElseThrow(()->new ResourceNotFoundException(id+" id bulunamadı"));
+        if(employeeEntity!=null){
+            employeeEntity.setUsername(employeeDto.getUsername());
+            employeeEntity.setEmail(employeeDto.getEmail());
+            employeeEntity.setPassword(employeeDto.getPassword());
+            employeeEntity.setPrice(employeeDto.getPrice());
+            repository.save(employeeEntity);
+        }
+        return employeeDto;
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 
 //Auditor
-@EnableJpaAuditing(auditorAwareRef = "AuditorAwareBean")
+@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @SpringBootApplication
 public class BackendProjectApplication {
 

@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
+import java.awt.font.LayoutPath;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -24,9 +25,10 @@ public class EmployeeEntity extends BaseEntity implements Serializable {
 public  static final long serialVersionUID=1L;
 
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String surname;
+    private String username;
+    private String email;
+    private String password;
+    private double price;
 
 }
