@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class EmployeeRestApi implements IEmployeeApiRest {
     //http://localhost:8080/employee/api/v1/employees
     @Override
     @PostMapping("/employees")
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
         service.createEmployee(employeeDto);
         return ResponseEntity.ok(employeeDto);
     }
@@ -66,7 +67,7 @@ public class EmployeeRestApi implements IEmployeeApiRest {
     //
     @Override
     @PutMapping("/employees/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(Long id, EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@Valid @PathVariable(name="id") Long id, EmployeeDto employeeDto) {
         service.updateEmployee(id,employeeDto);
         return ResponseEntity.ok(employeeDto);
     }
