@@ -1,5 +1,6 @@
 package com.ozlemaglar.backendproject.business.service.impl;
 
+import com.ozlemaglar.backendproject.bean.PasswordEncoderBean;
 import com.ozlemaglar.backendproject.business.service.IEmployeeService;
 import com.ozlemaglar.backendproject.data.entity.EmployeeEntity;
 import com.ozlemaglar.backendproject.data.repostory.IEmployeeRepository;
@@ -24,8 +25,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements IEmployeeService {
 
-    public final IEmployeeRepository repository;
-    public final ModelMapperBean modelMapper;
+    private final IEmployeeRepository repository;
+    private final ModelMapperBean modelMapper;
+    private final PasswordEncoderBean passwordEncoderBean;
 
     //Model Mapper (DTO )
     @Override
@@ -46,8 +48,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @PostMapping("/save/employee")
     public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
         if(employeeDto!=null){
-
+            employeeDto.setPassword(passwordEncoderBean.passwordEncoderMethod().encode(employeeDto.getPassword()));
             EmployeeEntity employeeEntity=dtoToEntity(employeeDto);
+
             repository.save(employeeEntity);
         }
         return employeeDto;
