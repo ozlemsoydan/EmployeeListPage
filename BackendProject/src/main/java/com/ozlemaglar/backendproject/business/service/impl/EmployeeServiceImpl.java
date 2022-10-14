@@ -7,7 +7,6 @@ import com.ozlemaglar.backendproject.bean.ModelMapperBean;
 import com.ozlemaglar.backendproject.business.dto.EmployeeDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,13 +44,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     //list
     @Override
-    public List<EmployeeDto> getAllEmployees(Long id) {
+    public List<EmployeeDto> getAllEmployees() {
         return null;
     }
 
     //find
     @Override
-    public EmployeeDto getEmployeeById() {
+    public EmployeeDto getEmployeeById(Long id) {
         return null;
     }
 

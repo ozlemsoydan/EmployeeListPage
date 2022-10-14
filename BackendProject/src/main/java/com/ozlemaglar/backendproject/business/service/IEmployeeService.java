@@ -17,10 +17,10 @@ public interface IEmployeeService {
     public EmployeeDto createEmployee(EmployeeDto employeeDto);
 
     //list
-    public List<EmployeeDto> getAllEmployees(Long id);
+    public List<EmployeeDto> getAllEmployees();
 
     //find
-    public EmployeeDto getEmployeeById();
+    public EmployeeDto getEmployeeById(Long id);
 
     //update
     public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto);
