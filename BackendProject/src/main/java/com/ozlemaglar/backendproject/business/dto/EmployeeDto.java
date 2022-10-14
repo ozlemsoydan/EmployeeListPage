@@ -1,5 +1,6 @@
 package com.ozlemaglar.backendproject.business.dto;
 
+import com.ozlemaglar.backendproject.annotation.EmployeeUniqueEmail;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,13 +21,15 @@ public class EmployeeDto {
 
 
     private Long id;
-    @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
 
+    @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
     private String username;
 
     @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
     @Email
     @Size(max=200)
+    //myAnnotation
+    @EmployeeUniqueEmail
     private String email;
 
     @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
