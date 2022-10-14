@@ -46,7 +46,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @PostMapping("/save/employee")
     public EmployeeDto createEmployee(@RequestBody EmployeeDto employeeDto) {
         if(employeeDto!=null){
-            //Spring Security maskeleme yapmak
+
             EmployeeEntity employeeEntity=dtoToEntity(employeeDto);
             repository.save(employeeEntity);
         }

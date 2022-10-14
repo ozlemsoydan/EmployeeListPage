@@ -3,6 +3,7 @@ package com.ozlemaglar.backendproject.ui.api.rest.controller;
 
 import com.ozlemaglar.backendproject.business.dto.EmployeeDto;
 import com.ozlemaglar.backendproject.business.service.IEmployeeService;
+import com.ozlemaglar.backendproject.error.ApiResult;
 import com.ozlemaglar.backendproject.ui.api.rest.IEmployeeApiRest;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.PackagePrivate;
@@ -25,6 +26,7 @@ import java.util.Map;
 public class EmployeeRestApi implements IEmployeeApiRest {
 
 
+    private final static String PATH = "/employee/api/v1/employees";
     private final IEmployeeService service;
 
     //http://localhost:8080/employee/api/v1
@@ -39,9 +41,10 @@ public class EmployeeRestApi implements IEmployeeApiRest {
     //http://localhost:8080/employee/api/v1/employees
     @Override
     @PostMapping("/employees")
-    public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<ApiResult> createEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
         service.createEmployee(employeeDto);
-        return ResponseEntity.ok(employeeDto);
+        ApiResult apiResult= new ApiResult(200,PATH,"created employee");
+        return ResponseEntity.ok(apiResult);
     }
 
 
