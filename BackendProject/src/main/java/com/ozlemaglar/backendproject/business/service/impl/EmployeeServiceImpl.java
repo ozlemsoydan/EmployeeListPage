@@ -13,10 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.management.openmbean.InvalidKeyException;
+import java.util.*;
 
 @Service
 @Transactional
@@ -66,6 +64,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         List<EmployeeDto> dtoList=new ArrayList<>();
         for (EmployeeEntity temp: entityList){
             EmployeeDto employeeDto=entityToDto(temp);
+            employeeDto.setPassword("****");
             dtoList.add(employeeDto);
         }
         return dtoList;

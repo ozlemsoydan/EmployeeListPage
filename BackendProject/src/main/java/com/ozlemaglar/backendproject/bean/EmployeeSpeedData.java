@@ -20,7 +20,7 @@ public class EmployeeSpeedData {
     @Bean
     CommandLineRunner createEmployeeData(EmployeeServiceImpl service){
         return (args)->{
-            for (int i = 1; i <5 ; i++) {
+            for (int i = 1; i <=5 ; i++) {
                 UUID uuid= UUID.randomUUID();
                 EmployeeDto employeeDto = EmployeeDto.builder()
                         .email(uuid+ "@gmail.com")
