@@ -54,7 +54,7 @@ export default class EmloyeeList extends Component {
   render() {
     return (
       <>
-        <h1 className="text-center text-uppercase">Customer List</h1>
+        <h1 className="text-center text-uppercase mt-5">Customer List</h1>
 
         <div className="row">
           <div className="mx-auto"><button className="btn btn-primary" onClick={() => this.addEmployee}>Add</button></div>
