@@ -11,6 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -38,4 +39,5 @@ public class EmployeeDto {
     private String password;
 
     private double price;
+    private Date systemCreateDate;
 }
