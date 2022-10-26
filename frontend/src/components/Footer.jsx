@@ -52,8 +52,8 @@ export default function Footer() {
         </div>
 
         <div className="text-center text-dark p-3" >
-          © 2020 Copyright:
-          <a className="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+          © 2022 Copyright:
+          <a className="text-dark" href="https://ozlemsoydan.com/">ozlemsoydan.com</a>
         </div>
       </footer>
 
