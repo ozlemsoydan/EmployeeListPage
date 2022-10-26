@@ -26,7 +26,8 @@ class EmployeeServices {
 
     //update(put)
     updateEmployee(id, employeeDto) {
-        return axios.put(EmployeeURL + "/" + id, employeeDto)
+        debugger;
+        return axios.put(EmployeeURL + "/" + id, employeeDto);
     }
 }
 

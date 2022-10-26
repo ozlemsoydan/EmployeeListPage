@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import EmployeeCreateInput from '../../resuability/EmployeeCreateInput';
 import EmployeeServices from '../../services/EmployeeServices';
 
 export default class EmployeeCreate extends Component {
@@ -10,8 +11,8 @@ export default class EmployeeCreate extends Component {
       username: "",
       email: "",
       price: "",
-      password:""
-    
+      password: ""
+
     }
     this.homePage = this.homePage.bind(this);
     this.saveorUpdate = this.saveorUpdate.bind(this);
@@ -69,9 +70,15 @@ export default class EmployeeCreate extends Component {
       EmployeeServices.createEmployee(employee).then(
         response => {
           this.props.history.push('/employees')
-          alert(employee.username +"eklendi");
+          alert(employee.username + "eklendi");
         }
-      )
+      ).catch((error) => {
+        // Error
+        debugger;
+        if (error.response) {
+          alert(error.response.data.errors[0].defaultMessage);
+        }
+    });
     }
     else {
       EmployeeServices.updateEmployee(this.state.id, employee).then(
@@ -115,14 +122,15 @@ export default class EmployeeCreate extends Component {
         <div className="container">
           <div className="row">
             <div className="card-body">
-              <div className="form-group"><label htmlFor="">username</label><input type="text" className='form-control' placeholder='Müşteri Kullanıcı Adı' name='username' value={this.state.username} onChange={this.onChangeUserName} />
-              </div>
-              <div className="form-group"><label htmlFor="">email</label><input type="text" className='form-control' placeholder='Müşteri Kullanıcı Email' name='email' value={this.state.email} onChange={this.onChangeEmail} />
-              </div>
-              <div className="form-group"><label htmlFor="">password</label><input type="text" className='form-control' placeholder='Müşteri Kullanıcı Şifresi' name='password' value={this.state.password} onChange={this.onChangePassword} />
-              </div>
-              <div className="form-group"><label htmlFor="">price</label><input type="text" className='form-control' placeholder='Fiyat' name='price' value={this.state.price} onChange={this.onChangePrice} />
-              </div>
+
+              <EmployeeCreateInput type="text" placeholder='Kullanıcı Adı' name='username' id="username" label="Kullanıcı Adı" focus="true" value={this.state.username} onChangeInput={this.onChangeUserName} />
+
+              <EmployeeCreateInput type="email" placeholder='Email' name='email' id="email" label="Email" focus="false" value={this.state.email} onChangeInput={this.onChangeEmail} />
+
+              <EmployeeCreateInput type="password" placeholder='Şifre' name='password' id="password" label="Kullanıcı Şifresi" focus="false" value={this.state.password} onChangeInput={this.onChangePassword} />
+
+              <EmployeeCreateInput type="number" placeholder='Price' name='price' id="price" label="Price" focus="false" value={this.state.price} onChangeInput={this.onChangePrice} />
+
               <div className="mt-3 mb-3 d-inline">
                 <button type='reset' className="btn btn-danger" onClick={this.cancel.bind(this)}>Temizle</button>
                 <button type='submit' className="btn btn-primary" onClick={this.saveorUpdateEmplloyee} >Gönder</button>
