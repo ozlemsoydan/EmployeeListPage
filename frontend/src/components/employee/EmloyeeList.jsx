@@ -57,7 +57,7 @@ export default class EmloyeeList extends Component {
         <h1 className="text-center text-uppercase mt-5">Customer List</h1>
 
         <div className="row">
-          <div className="mx-auto"><button className="btn btn-primary" onClick={() => this.addEmployee}>Add</button></div>
+          <div className="mx-auto"><button className="btn btn-primary" onClick={this.addEmployee}>Yeni Ekle</button></div>
         </div>
 
         <table className="table table-hover table-striped">

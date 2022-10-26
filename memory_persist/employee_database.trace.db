@@ -1,6 +1,0 @@
-2022-10-20 01:09:44 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EMPLOYEE_DATABASE_MV" not found (this database is empty); SQL statement:
-insert into employee_database_mv (id, created_by, created_user_date, system_created_date, update_by, update_date, email, password, price, username) values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?) [42104-214]
-2022-10-20 01:10:59 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "EMPLOYEE" not found (this database is empty); SQL statement:
-insert into employee (id, created_by, created_user_date, system_created_date, update_by, update_date, email, password, price, username) values (default, ?, ?, ?, ?, ?, ?, ?, ?, ?) [42104-214]
