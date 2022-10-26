@@ -26,16 +26,16 @@ public class EmployeeDto {
     @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
     private String username;
 
-    @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
+    @NotNull(message="{ozlem.email.validation.constraints.NotNull.message")
     @Email
-    @Size(max=200)
+    @Size(max=100)
     //myAnnotation
     @EmployeeUniqueEmail
     private String email;
 
-    @NotNull(message="{ozlem.username.validation.constraints.NotNull.message}")
+    @NotNull(message="{ozlem.password.validation.constraints.NotNull.message}")
     @Size(min=7, max=50)
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).*$",message = "{hamit.password.pattern.validation.constraints.NotNull.message}")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).*$",message = "{ozlem.password.pattern.validation.constraints.NotNull.message}")
     private String password;
 
     private double price;
