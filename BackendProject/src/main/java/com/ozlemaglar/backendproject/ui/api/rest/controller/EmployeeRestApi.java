@@ -70,7 +70,7 @@ public class EmployeeRestApi implements IEmployeeApiRest {
     //
     @Override
     @PutMapping("/employees/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@Valid @PathVariable(name="id") Long id, EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@Valid @PathVariable(name="id") Long id, @RequestBody EmployeeDto employeeDto) {
         service.updateEmployee(id,employeeDto);
         return ResponseEntity.ok(employeeDto);
     }
