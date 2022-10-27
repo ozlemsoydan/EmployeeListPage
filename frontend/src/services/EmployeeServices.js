@@ -4,6 +4,10 @@ const EmployeeURL = "/employee/api/v1/employees";
 
 class EmployeeServices {
 
+    otherLanguageServices(Language){
+        axios.defaults.headers['accept-language']=Language;
+    }
+
     //save(post)
     createEmployee(employeeDto) {
         return axios.post(EmployeeURL, employeeDto);

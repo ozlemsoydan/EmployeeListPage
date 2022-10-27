@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import OtherLanguage from '../../i18n/OtherLanguage';
 import EmployeeCreateInput from '../../resuability/EmployeeCreateInput';
 import EmployeeServices from '../../services/EmployeeServices';
 
@@ -135,6 +136,8 @@ export default class EmployeeCreate extends Component {
                 <button type='reset' className="btn btn-danger" onClick={this.cancel.bind(this)}>Temizle</button>
                 <button type='submit' className="btn btn-primary" onClick={this.saveorUpdateEmplloyee} >Gönder</button>
               </div>
+
+              <OtherLanguage/>
             </div>
           </div>
         </div>
