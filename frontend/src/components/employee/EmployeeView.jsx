@@ -9,6 +9,7 @@ export default class EmployeeView extends Component {
       employee: {}
 
     }
+    this.homePage=this.homePage.bind(this);
 
   }
 
@@ -22,18 +23,22 @@ export default class EmployeeView extends Component {
     )
   }
 
+  homePage() {
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <>
-        <div className="card text-center">
-          <div className="card-header">Müşteri Detay Sayfası</div>
-          <div className="card-body">
-            <h4 className="card-title">{this.state.employee.id}</h4>
-            <p className="card-text">{this.state.employee.id}</p>
-            <p className="card-text">{this.state.employee.username}</p>
-            <p className="card-text">{this.state.employee.email}</p>
-            <p className="card-text">{this.state.employee.price}</p>
-            <a href="">Click Me</a>
+        <div className="card ">
+          <h3 className="card-header text-center m-3">Müşteri Detay Sayfası</h3>
+          <div className="card-body text-left m-5">
+          
+            <p className="card-text"><b>id: </b>{this.state.employee.id}</p>
+            <p className="card-text"><b>username: </b>{this.state.employee.username}</p>
+            <p className="card-text"><b>email: </b>{this.state.employee.email}</p>
+            <p className="card-text"><b>price: </b>{this.state.employee.price}</p>
+            <button className="btn btn-primary " style={{float: "right"}} onClick={this.homePage}>Listeye dön</button>
           </div>
         </div>
         <div className="card-footer text-muted">{this.state.employee.systemCreatedDate}</div>
