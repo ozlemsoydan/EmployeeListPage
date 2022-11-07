@@ -54,10 +54,10 @@ export default class EmloyeeList extends Component {
   render() {
     return (
       <>
-        <h1 className="text-center text-uppercase mt-5">Customer List</h1>
+        <h3 className="text-center text-uppercase mt-5">Müşteri Listesi</h3>
 
         <div className="row">
-          <div className="mx-auto"><button className="btn btn-primary" onClick={this.addEmployee}>Yeni Ekle</button></div>
+          <div className="mx-auto"><button style={{float:"right"}} className="btn btn-primary" onClick={this.addEmployee}>Yeni Ekle</button></div>
         </div>
 
         <table className="table table-hover table-striped">
@@ -83,12 +83,17 @@ export default class EmloyeeList extends Component {
                   <td> {employees.email}</td>
                   <td> {employees.password}</td>
                   <td> {employees.price}</td>
-                  <td><button><i className="fa-solid fa-pen-to-square text-primary" onClick={() => this.editEmployee(employees.id)}></i></button></td>
-                  <td><button><i className="fa-solid fa-eye text-success" onClick={() => this.viewEmployee(employees.id)}></i></button></td>
-                  <td><button><i className="fa-solid fa-trash-can text-danger" onClick={() => {
+                  <td>
+                    <i className="fa-solid fa-pen-to-square text-primary"  onClick={() => this.editEmployee(employees.id)}></i>
+                    </td>
+                  <td>
+                    <i className="fa-solid fa-eye text-success" onClick={() => this.viewEmployee(employees.id)}></i></td>
+                  <td>
+                    <i className="fa-solid fa-trash-can text-danger" onClick={() => {
                     if (window.confirm("silmek istiyor musunuz?"))
                       this.deleteEmployee(employees.id)
-                  }}></i></button></td>
+                      }}></i>
+                  </td>
                 </tr>
               )
             }

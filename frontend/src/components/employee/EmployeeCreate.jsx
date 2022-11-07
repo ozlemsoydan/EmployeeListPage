@@ -53,9 +53,9 @@ export default class EmployeeCreate extends Component {
 
   saveorUpdate() {
     if (this.state.id === "_add") {
-      return <h1 className='display-3 text-center mt-5'>Müşteri Ekle</h1>
+      return <h3 className='text-center mt-5'>Müşteri Ekle</h3>
     } else {
-      return <h1 className='display-3 text-center mt-5'>Müşteri Güncelle</h1>
+      return <h3 className='text-center mt-5'>Müşteri Güncelle</h3>
     }
   }
 
@@ -117,11 +117,13 @@ export default class EmployeeCreate extends Component {
   render() {
     return (
       <>
+      <div className="row">
         {this.saveorUpdate()}
-        <div className="mx-auto"><button className="btn btn-primary mb-4" onClick={this.homePage}>Listele</button>
+        <div className="">
+          <button className="btn btn-primary m-2" style={{float:"right"}} onClick={this.homePage}>Listele</button>
         </div>
         <div className="container">
-          <div className="row">
+          
             <div className="card-body">
 
               <EmployeeCreateInput type="text" placeholder='Kullanıcı Adı' name='username' id="username" label="Kullanıcı Adı" focus="true" value={this.state.username} onChangeInput={this.onChangeUserName} />
@@ -137,7 +139,6 @@ export default class EmployeeCreate extends Component {
                 <button type='submit' className="btn btn-primary" onClick={this.saveorUpdateEmplloyee} >Gönder</button>
               </div>
 
-              <OtherLanguage/>
             </div>
           </div>
         </div>
