@@ -16,3 +16,5 @@
 ![Screenshot1](https://github.com/ozlemsoydan/SpringProjectExample/blob/main/screenshots/view%20page.png)
 
 ![Screenshot1](https://github.com/ozlemsoydan/SpringProjectExample/blob/main/screenshots/update%20page.png)
+
+![Screenshot1](https://github.com/ozlemsoydan/SpringProjectExample/blob/main/screenshots/swagger.png)
